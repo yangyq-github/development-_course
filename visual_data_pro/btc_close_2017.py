@@ -80,15 +80,28 @@ line_chart_weekday = draw_line(weekdays_int, closes[1:idx_week], "收盘价星�
 line_chart_weekday.x_labels = ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
 # line_chart_weekday.render_to_file("收盘价星期均值（￥）.svg")
 
+for x, y in groupby(sorted(zip(weeks[1:idx_week],closes[1:idx_week])), key=lambda __: __[0]):
+    y_list = [v for _, v in y]
+    y_list_new = []
+    for a,e in y:
+        y_list_new.append([a,e])
+    # print(y_list)
+    # print(type(y))
+    # print(y_list_new)
+
+
+a =(sorted(zip(weeks[1:idx_week],closes[1:idx_week])))
+print(a)
+
 
 # 收盘价数据仪表盘
-with open('收盘价Dashboard.html', 'w', encoding='utf-8')  as  html_file:
-    html_file.write('<html><head><title>收盘价Dashboard</title><meta charset="utf-8"></head><body>\n')
-    for svg in [
-        '收盘价折线图(￥).svg', '收盘价对数变换折线图（¥）.svg', '收盘价月日均值（￥）.svg',
-        '收盘价周日均值（￥）.svg', '收盘价星期均值（￥）.svg'
-    ]:
-        html_file.write('   <object type="image/svg+xml" data="{0}" height=500></object>\n'.format(svg))
-    html_file.write('</body></html>')
+# with open('收盘价Dashboard.html', 'w', encoding='utf-8')  as  html_file:
+#     html_file.write('<html><head><title>收盘价Dashboard</title><meta charset="utf-8"></head><body>\n')
+#     for svg in [
+#         '收盘价折线图(￥).svg', '收盘价对数变换折线图（¥）.svg', '收盘价月日均值（￥）.svg',
+#         '收盘价周日均值（￥）.svg', '收盘价星期均值（￥）.svg'
+#     ]:
+#         html_file.write('   <object type="image/svg+xml" data="{0}" height=500></object>\n'.format(svg))
+#     html_file.write('</body></html>')
 
 

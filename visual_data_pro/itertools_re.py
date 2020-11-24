@@ -6,6 +6,7 @@ __author__ = 'yangyanqin'
 """对itertools模块的学习"""
 
 import itertools
+from operator import itemgetter
 
 n = itertools.count(step=2)
 # count:创建一个迭代器，生成从n开始的连续整数，如果不设置start，则默认从0开始，step是步长，不支持长整型
@@ -33,7 +34,7 @@ c= itertools.chain("234","444")
 #     print(i)
 
 d= itertools.groupby("addfafdfdfd")
-
+#
 # for key,value in d:
 #     print(key,list(value))
 
@@ -43,7 +44,14 @@ a=([1, 4, 3,8], [3, 2, 5,5], [5, 1, 2,9], [4, 3, 1,0], [2, 5, 3,6])
 b=[*zip(*a)]
 
 a = [(1, 7175),(10, 8504),(2, 8504)]
-print(sorted(a,key=lambda __:__[0]))
+# print(sorted(a,key=lambda __:__[0]))
 
+# for x,y in itertools.groupby(a):
+    # new_a=[v for _,v in y]
+    # print(new_a)
+    # print([v for v in y])
 
+a_01={"a":1,"b":2,"c":7,"d":3}
+print(a_01.get("d",9))
+print(sorted(a_01,key=itemgetter(0)))
 
